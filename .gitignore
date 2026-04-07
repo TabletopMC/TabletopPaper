@@ -1,0 +1,16 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+
+/run
+
+/tabletop-server/build.gradle.kts
+/tabletop-server/src/minecraft
+/paper-server
+/tabletop-api/build.gradle.kts
+/paper-api
+/paper-api-generator
+
+.idea/
