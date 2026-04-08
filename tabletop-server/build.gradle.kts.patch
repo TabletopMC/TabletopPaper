@@ -49,6 +49,15 @@
      implementation("ca.spottedleaf:concurrentutil:0.0.10")
      implementation("org.jline:jline-terminal-ffm:3.27.1") // use ffm on java 22+
      implementation("org.jline:jline-terminal-jni:3.27.1") // fall back to jni on java 21
+@@ -133,7 +_,7 @@
+     implementation("io.netty:netty-codec-haproxy:4.2.7.Final") // Add support for proxy protocol
+     implementation("org.apache.logging.log4j:log4j-iostreams:2.25.2")
+     implementation("org.ow2.asm:asm-commons:9.9.1")
+-    implementation("org.spongepowered:configurate-yaml:4.2.0")
++    //implementation("org.spongepowered:configurate-yaml:4.2.0")
+ 
+     // Deps that were previously in the API but have now been moved here for backwards compat, eventually to be removed
+     runtimeOnly("commons-lang:commons-lang:2.6")
 @@ -171,14 +_,14 @@
          val gitBranch = git.exec(providers, "rev-parse", "--abbrev-ref", "HEAD").get().trim()
          attributes(
