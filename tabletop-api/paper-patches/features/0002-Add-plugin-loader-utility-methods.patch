@@ -5,18 +5,10 @@ Subject: [PATCH] Add plugin loader utility methods
 
 
 diff --git a/src/main/java/io/papermc/paper/plugin/loader/library/impl/MavenLibraryResolver.java b/src/main/java/io/papermc/paper/plugin/loader/library/impl/MavenLibraryResolver.java
-index 298bb04c294a89ad783eb3dac73faf47fa5fb1ba..cf66be177db0fdbd7c3c286538f34c5a2d190ccc 100644
+index 298bb04c294a89ad783eb3dac73faf47fa5fb1ba..57e61fe33f86db5af3ed02477817d84154e4cef1 100644
 --- a/src/main/java/io/papermc/paper/plugin/loader/library/impl/MavenLibraryResolver.java
 +++ b/src/main/java/io/papermc/paper/plugin/loader/library/impl/MavenLibraryResolver.java
-@@ -9,6 +9,7 @@ import java.util.List;
- import org.apache.maven.repository.internal.MavenRepositorySystemUtils;
- import org.eclipse.aether.DefaultRepositorySystemSession;
- import org.eclipse.aether.RepositorySystem;
-+import org.eclipse.aether.artifact.DefaultArtifact;
- import org.eclipse.aether.collection.CollectRequest;
- import org.eclipse.aether.connector.basic.BasicRepositoryConnectorFactory;
- import org.eclipse.aether.graph.Dependency;
-@@ -128,6 +129,29 @@ public class MavenLibraryResolver implements ClassPathLibrary {
+@@ -128,6 +128,29 @@ public class MavenLibraryResolver implements ClassPathLibrary {
          }
          this.repositories.add(remoteRepository);
      }
@@ -28,19 +20,19 @@ index 298bb04c294a89ad783eb3dac73faf47fa5fb1ba..cf66be177db0fdbd7c3c286538f34c5a
 +    /// @param coords A Gradle-style dependency string: `com.example:artifact:1.0.0-SNAPSHOT`
 +    /// @see #addDependency(Dependency)
 +    public void addDependencyCoords(final String coords) {
-+        this.addDependency(new Dependency(new DefaultArtifact(coords), null));
++        this.addDependency(new Dependency(new org.eclipse.aether.artifact.DefaultArtifact(coords), null));
 +    }
 +
 +    /// Adds the provided repository to the library resolver.
 +    /// This is a utility method for [#addRepository(RemoteRepository)].
 +    ///
-+    /// This method sets the `id` and `type` of the repository to `null`. If you need
++    /// This method sets the `id` to `null` and `type` of the repository to `default`. If you need
 +    /// more fine-grained control over the repository, you should prefer [#addRepository(RemoteRepository)].
 +    ///
 +    /// @param url the URL to the repository
 +    /// @see #addRepository(RemoteRepository)
 +    public void addRepositoryUrl(final String url) {
-+        this.addRepository(new RemoteRepository.Builder(null, null, url).build());
++        this.addRepository(new RemoteRepository.Builder(null, "default", url).build());
 +    }
 +    // Tabletop end
  
