@@ -14,3 +14,5 @@ build
 /paper-api-generator
 
 .idea/
+
+test-plugin.settings.gradle.kts

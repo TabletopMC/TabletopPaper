@@ -1,0 +1,7 @@
+name: TestPlugin
+main: net.tabletopmc.testplugin.TestPlugin
+loader: net.tabletopmc.testplugin.TestPluginLoader
+bootstrapper: net.tabletopmc.testplugin.TestPluginBootstrap
+
+version: 1.0.0-DEV
+api-version: 26.1.1
