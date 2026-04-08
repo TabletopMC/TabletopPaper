@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Strokkur24 <strokkur.24@gmail.com>
+Date: Wed, 8 Apr 2026 01:31:40 +0200
+Subject: [PATCH] Update brand
+
+
+diff --git a/src/main/java/io/papermc/paper/ServerBuildInfoImpl.java b/src/main/java/io/papermc/paper/ServerBuildInfoImpl.java
+index 74ffdc823e66fc5ec027c4b7c462382bcbfe2be2..2b2daead864d4d3567ba4b6ae432a3ba5e291cf4 100644
+--- a/src/main/java/io/papermc/paper/ServerBuildInfoImpl.java
++++ b/src/main/java/io/papermc/paper/ServerBuildInfoImpl.java
+@@ -30,7 +30,7 @@ public record ServerBuildInfoImpl(
+     private static final String ATTRIBUTE_GIT_BRANCH = "Git-Branch";
+     private static final String ATTRIBUTE_GIT_COMMIT = "Git-Commit";
+ 
+-    private static final String BRAND_PAPER_NAME = "Paper";
++    private static final String BRAND_PAPER_NAME = "TabletopPaper";
+ 
+     private static final String BUILD_DEV = "DEV";
+ 
