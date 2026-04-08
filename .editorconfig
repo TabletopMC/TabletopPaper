@@ -1,0 +1,19 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+max_line_length = off
+tab_width = 4
+
+[paper-api/src/main/java/**/*.java]
+ij_java_use_fq_class_names = true
+
+[paper-server/src/main/java/**/*.java]
+ij_java_use_fq_class_names = true
+
+[tabletop-server/src/minecraft/java/**/*.java]
+ij_java_use_fq_class_names = true

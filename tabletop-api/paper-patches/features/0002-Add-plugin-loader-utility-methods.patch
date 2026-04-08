@@ -1,0 +1,48 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Strokkur24 <strokkur.24@gmail.com>
+Date: Wed, 8 Apr 2026 02:30:43 +0200
+Subject: [PATCH] Add plugin loader utility methods
+
+
+diff --git a/src/main/java/io/papermc/paper/plugin/loader/library/impl/MavenLibraryResolver.java b/src/main/java/io/papermc/paper/plugin/loader/library/impl/MavenLibraryResolver.java
+index 298bb04c294a89ad783eb3dac73faf47fa5fb1ba..cf66be177db0fdbd7c3c286538f34c5a2d190ccc 100644
+--- a/src/main/java/io/papermc/paper/plugin/loader/library/impl/MavenLibraryResolver.java
++++ b/src/main/java/io/papermc/paper/plugin/loader/library/impl/MavenLibraryResolver.java
+@@ -9,6 +9,7 @@ import java.util.List;
+ import org.apache.maven.repository.internal.MavenRepositorySystemUtils;
+ import org.eclipse.aether.DefaultRepositorySystemSession;
+ import org.eclipse.aether.RepositorySystem;
++import org.eclipse.aether.artifact.DefaultArtifact;
+ import org.eclipse.aether.collection.CollectRequest;
+ import org.eclipse.aether.connector.basic.BasicRepositoryConnectorFactory;
+ import org.eclipse.aether.graph.Dependency;
+@@ -128,6 +129,29 @@ public class MavenLibraryResolver implements ClassPathLibrary {
+         }
+         this.repositories.add(remoteRepository);
+     }
++    // Tabletop start - add plugin loader utility methods
++
++    /// Adds the provided dependency to the library resolver.
++    /// This is a utility method for [#addDependency(org.eclipse.aether.graph.Dependency)].
++    ///
++    /// @param coords A Gradle-style dependency string: `com.example:artifact:1.0.0-SNAPSHOT`
++    /// @see #addDependency(Dependency)
++    public void addDependencyCoords(final String coords) {
++        this.addDependency(new Dependency(new DefaultArtifact(coords), null));
++    }
++
++    /// Adds the provided repository to the library resolver.
++    /// This is a utility method for [#addRepository(RemoteRepository)].
++    ///
++    /// This method sets the `id` and `type` of the repository to `null`. If you need
++    /// more fine-grained control over the repository, you should prefer [#addRepository(RemoteRepository)].
++    ///
++    /// @param url the URL to the repository
++    /// @see #addRepository(RemoteRepository)
++    public void addRepositoryUrl(final String url) {
++        this.addRepository(new RemoteRepository.Builder(null, null, url).build());
++    }
++    // Tabletop end
+ 
+     /**
+      * Resolves the provided dependencies and adds them to the library store.
