@@ -32,6 +32,7 @@ val paperMavenPublicUrl = "https://repo.papermc.io/repository/maven-public/"
 
 subprojects {
   apply(plugin = "java-library")
+  apply(plugin = "maven-publish")
 
   extensions.configure<JavaPluginExtension> {
     toolchain {
@@ -64,6 +65,18 @@ subprojects {
       showStackTraces = true
       exceptionFormat = TestExceptionFormat.FULL
       events(TestLogEvent.STANDARD_OUT)
+    }
+  }
+
+  extensions.configure<PublishingExtension> {
+    repositories {
+      maven("https://eldonexus.de/repository/maven-snapshots/") {
+        name = "Eldonexus"
+        credentials {
+          username = System.getenv("NEXUS_USERNAME") ?: ""
+          password = System.getenv("NEXUS_PASSWORD") ?: ""
+        }
+      }
     }
   }
 }

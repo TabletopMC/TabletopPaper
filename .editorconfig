@@ -3,19 +3,19 @@ root = true
 [*]
 charset = utf-8
 end_of_line = lf
-indent_size = 4
+indent_size = 2
 indent_style = space
 insert_final_newline = true
 max_line_length = off
 
-[test-plugin/**]
-indent_size = 2
-
 [paper-api/src/main/java/**/*.java]
 ij_java_use_fq_class_names = true
+indent_size = 4
 
 [paper-server/src/main/java/**/*.java]
 ij_java_use_fq_class_names = true
+indent_size = 4
 
 [tabletop-server/src/minecraft/java/**/*.java]
 ij_java_use_fq_class_names = true
+indent_size = 4
