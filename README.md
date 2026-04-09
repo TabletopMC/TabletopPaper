@@ -17,12 +17,12 @@ for more details.
 ## Using the API
 
 To depend on the TabletopPaper API, add the dependency to your `build.gradle.kts` file.
-If you are not using [TabletopPatcher](https://github.com/TabletopMC/TabletopPatcher), you will
-additionally need to include the Eldonexus Maven repo, where our API artifacts are hosted.
+You will need to include both the Eldonexus Maven repo, where our API artifacts are hosted
+and the PaperMC Maven repo, for any transitive dependencies.
 
 ```kts
 repositories {
-  // Not required with the tabletop-patcher Gradle plugin
+  maven("https://repo.papermc.io/repository/maven-public/")
   maven("https://eldonexus.de/repository/maven-public/")
 }
 
