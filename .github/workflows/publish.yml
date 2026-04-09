@@ -22,8 +22,15 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      - name: Apply API patches
+        run: |
+          git config --global user.email "tabletop.paper@workflow.github.com"
+          git config --global user.name "TabletopPaper"
+          ./gradlew :applyPaperSingleFilePatches
+          ./gradlew :applyAllPatches
+
       - name: Publish
-        run: ./gradlew :tabletop-api:publishMavenPublicationToEldonexus
+        run: ./gradlew publish -PpublishDevBundle
         env:
           NEXUS_USERNAME: "${{ secrets.NEXUS_USERNAME }}"
           NEXUS_PASSWORD: "${{ secrets.NEXUS_PASSWORD }}"
